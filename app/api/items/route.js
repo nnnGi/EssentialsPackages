@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { addItem, getItems } from "../../../lib/db";
 
 // GET all items
-export async function GET() {
+export async function GET(req) {
 	console.log("API route invoked");
 	const items = await getItems();
 	return NextResponse.json(items);
