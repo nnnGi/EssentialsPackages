@@ -15,3 +15,4 @@ export async function POST(req) {
   await addItem(name);
   return NextResponse.json({ success: true });
 }
+console.log("POSTGRES_URL:", process.env.POSTGRES_URL);
