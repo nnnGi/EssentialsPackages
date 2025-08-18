@@ -2,18 +2,22 @@ import { NextResponse } from "next/server";
 import { addItem, getItems } from "../../../lib/db";
 
 // GET all items
-export async function GET(req) {
-	console.log("API route invoked");
-	const items = await getItems();
-	return NextResponse.json(items);
+export async function GET() {
+  const items = await getItems();
+  return NextResponse.json(items);
 }
 
-// POST a new item
+// POST a new item with name + description
 export async function POST(req) {
-	const { name } = await req.json();
-	if (!name) return NextResponse.json({ error: "Name required" }, { status: 400 });
+  const { name, rhid } = await req.json();
 
-	await addItem(name);
-	return NextResponse.json({ success: true });
+  if (!name || !rhid) {
+    return NextResponse.json(
+      { error: "Name and rhid required" },
+      { status: 400 }
+    );
+  }
+
+  await addItem(name, rhid);
+  return NextResponse.json({ success: true });
 }
-console.log("POSTGRES_URL:", process.env.POSTGRES_URL);
