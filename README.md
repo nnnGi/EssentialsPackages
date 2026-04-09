@@ -1,2 +1,1 @@
-## Repository Containing Source for the EssentialsLib Package Index Database
-This repository is sourced under the MIT License for the Azurite Organisation and 0xnCubed for the RoutineHub Shortcut Essentials Library
+## Subject to Modification
